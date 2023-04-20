@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import ReactModal from 'react-modal';
 import check from './assets/check.svg'
 import search from './assets/search.svg'
 import x from './assets/x.svg'
@@ -8,6 +9,8 @@ import './App.css'
 function App() {
     const url = 'http://localhost:5000/tarea'
     const [alltarea, setAlltarea] = useState()
+    const [modalIsOpen,setModalIsOpen] = useState(false)
+         
     const fetchApi = async () => {
         const response = await fetch(url)
         const data = await response.json()
@@ -57,7 +60,7 @@ function App() {
                         })
                     }
                 </div>
-                <div className='add'><button className='btn-add'>+</button></div>
+                <div className='add'><button className='btn-add' onClick={() => this.setState({ modalIsOpen: true })}>+</button></div>
             </section>
         </div>
     )
